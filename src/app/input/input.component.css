@@ -1,0 +1,11 @@
+#valor1{
+    width: 50px;
+}
+#valor2{
+    width: 50px;
+}
+.btn-primary{
+    background-color: tomato;
+    width: 2rem;
+    height: 2rem;
+}

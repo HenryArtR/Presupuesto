@@ -11,13 +11,13 @@ export class PressupostService implements OnInit{
     return this._total;
   }
 
-  calcularTotal(numbPag: string, numIdiomas: string){
-    if(numbPag === ""){
-      this._total = parseInt(numIdiomas) * 30
-    }else if(numIdiomas === ""){
-      this._total = parseInt(numbPag) * 30
+  calcularTotal(numbPag: number, numIdiomas: number){
+    if(numbPag === 0){
+      this._total = numIdiomas * 30
+    }else if(numIdiomas === 0){
+      this._total = numbPag * 30
     }else{
-      this._total = parseInt(numbPag) * parseInt(numIdiomas) * 30
+      this._total = numbPag * numIdiomas * 30
     }
     
   }
