@@ -1,0 +1,10 @@
+<div class="col-4 m-4 border border-dark border-3 rounded">  
+    <form class="col ms-5 py-4" [formGroup]="miFormulario">
+        <label for="valor1">Número de páginas </label>
+        <input type="number" #numPag id="valor1" (input)="cambiaPag(numPag.value, numIdiomas.value)" formControlName = 'valor1'>
+        <br><br>
+        <label for="valor2">Número de idiomas </label>
+        <input type="number" #numIdiomas id="valor2" (input)="cambiaIdioma(numPag.value, numIdiomas.value)" formControlName = 'valor2'>
+        
+    </form>
+</div>

@@ -1,0 +1,8 @@
+<h3>¿Que quieres hacer?</h3>
+
+<input type="checkbox" #cbox1 id="cbox1" (click)="web(cbox1.checked)"><label for="cbox1">Una pàgina web (500€)</label><br>
+<app-panell *ngIf="open"></app-panell>
+<input type="checkbox" #cbox2 id="cbox2" (click)="seo(cbox2.checked)"><label for="cbox2">Una consultoria SEO (300€)</label><br>
+<input type="checkbox" #cbox3 id="cbox3" (click)="ads(cbox3.checked)"><label for="cbox3">Una campanya de Google Ads (200€)</label><br>
+
+<p>Preu: {{total}} </p>
