@@ -1,14 +1,38 @@
-<h3>¿Que quieres hacer?</h3>
-
-<input type="checkbox" #cbox1 id="cbox1" (click)="web(cbox1.checked)"><label for="cbox1">Una pàgina web (500€)</label><br>
-<app-panell *ngIf="open"></app-panell>
-<input type="checkbox" #cbox2 id="cbox2" (click)="seo(cbox2.checked)"><label for="cbox2">Una consultoria SEO (300€)</label><br>
-<input type="checkbox" #cbox3 id="cbox3" (click)="ads(cbox3.checked)"><label for="cbox3">Una campanya de Google Ads (200€)</label><br>
-
-<p>Preu: {{total}} </p>
-
-<ul class="nav nav-pills">
+<div class="container">
+  <ul class="nav nav-pills">
     <li class="nav-item">
-      <a class="nav-link active" aria-current="page" href="">Volver</a>
+      <a class="nav-link active" aria-current="page" href="">Volver a Inicio</a>
     </li>
-</ul>
+  </ul>
+  <br>
+  <div class="row">
+    <div class="col">
+      <h3>¿Que quieres hacer?</h3>
+      <input type="checkbox" #cbox1 id="cbox1" (click)="web(cbox1.checked)"><label for="cbox1">Una pàgina web (500€)</label><br>
+      <app-panell *ngIf="open"></app-panell>
+      <input type="checkbox" #cbox2 id="cbox2" (click)="seo(cbox2.checked)"><label for="cbox2">Una consultoria SEO (300€)</label><br>
+      <input type="checkbox" #cbox3 id="cbox3" (click)="ads(cbox3.checked)"><label for="cbox3">Una campanya de Google Ads (200€)</label><br>
+      <br>
+      <form [formGroup]="validador">
+        <label for="nomPressupost">Nombre del presupuesto</label><br><input type="text" id="nomPressupost" #nompresu formControlName = 'titulo'>
+        <br>
+        <label for="nomClient">Nombre de usuario</label><br><input type="text" id="nomClient" #nomusu formControlName = 'usuario'>
+      </form>
+      
+
+      <p>Preu: {{total}} </p>
+
+      <button class="btn btn-secondary" [disabled]="validador.invalid" type="submit" (click)="agregar()">Agregar presupuesto</button>
+
+      
+    </div>
+
+    <div class="col">
+      <app-pressupost-list></app-pressupost-list>
+    </div>
+  </div>
+
+</div>   
+
+
+

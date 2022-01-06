@@ -1,14 +1,27 @@
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
+import { Pressupost } from '../interfaces/pressupost.interface';
 
 @Injectable({
   providedIn: 'root'
 })
-export class PressupostService implements OnInit{
+export class PressupostService {
 
-  private _total: number = 0
+  numPaginas: number = 0;
+  numIdiomas: number = 0;
+  private _total: number = 0;
+  private _pressupost: Pressupost[] = [];
 
   get total(){
     return this._total;
+  }
+  get pressupost(){
+    return [...this._pressupost];
+  }
+
+  agregarPresupuesto(presupuesto: Pressupost){
+    if(!this._pressupost.includes(presupuesto)){
+      this._pressupost.push(presupuesto)
+    }
   }
 
   calcularTotal(numbPag: number, numIdiomas: number){
@@ -22,9 +35,5 @@ export class PressupostService implements OnInit{
     
   }
 
-  ngOnInit(): void {
-    
-  }
-  
   
 }

@@ -1,0 +1,4 @@
+<h3 class="text-center">Listado de Presupuestos</h3>
+<ul>
+    <li *ngFor='let item of pressupost'>Hola {{item.cliente | titlecase}}, has escogido el servicio ({{item.servicios}}) por el precio de: {{item.precio}}€ <br><span *ngIf="item.servicios.includes('web')">(numero de paginas webs = {{item.numPaginas}}, idiomas = {{item.numIdiomas}})</span> </li>  
+</ul>

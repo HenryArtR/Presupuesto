@@ -8,6 +8,8 @@ import { HomeComponent } from './home/home.component';
 import { PanellComponent } from './panell/panell.component';
 import { InputComponent } from './input/input.component';
 import { BienvenidaComponent } from './bienvenida/bienvenida.component';
+import { ModalComponent } from './modal/modal.component';
+import { PressupostListComponent } from './pressupost-list/pressupost-list.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +18,8 @@ import { BienvenidaComponent } from './bienvenida/bienvenida.component';
     PanellComponent,
     InputComponent,
     BienvenidaComponent,
+    ModalComponent,
+    PressupostListComponent,
   ],
   imports: [
     BrowserModule,

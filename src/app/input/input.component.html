@@ -1,13 +1,19 @@
 <form [formGroup]="miFormulario">
+
     <label for="valor1">Número de páginas</label>
     <button type="button" class="btn btn-primary m-2" (click)="suma1()">+</button>
-    <input type="text" [value]="valor1" id="valor1" [(ngModel)]="valor1" (keyup)="agregarValor()" formControlName = 'valor1'>
+    <input type="text" [value]="valor1" id="valor1" [(ngModel)]="valor1" (keyup)="agregarValor()" formControlName = 'numpag'>
     <button type="button" class="btn btn-primary m-2" (click)="resta1()">-</button>
+    <app-modal [cantidad]="cantidad" (click) = "cambiaPag()"></app-modal>
+
     <br><br>
+
     <label for="valor2">Número de idiomas </label>
     <button type="button" class="btn btn-primary m-2" (click)="suma2()">+</button>
-    <input type="text" [value]="valor2" id="valor2" [(ngModel)]="valor2" (keyup)="agregarValor()" formControlName = 'valor2'>
+    <input type="text" [value]="valor2" id="valor2" [(ngModel)]="valor2" (keyup)="agregarValor()" formControlName = 'numidiomas'>
     <button type="button" class="btn btn-primary m-2" (click)="resta2()">-</button>
+    <app-modal (click) = "cambiaIdioma()"></app-modal>
+    
 </form>
 
 
