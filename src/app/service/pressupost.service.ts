@@ -9,18 +9,16 @@ export class PressupostService {
   numPaginas: number = 0;
   numIdiomas: number = 0;
   private _total: number = 0;
-  private _pressupost: Pressupost[] = [];
+  pressupost: Pressupost[] = [];
 
   get total(){
     return this._total;
   }
-  get pressupost(){
-    return [...this._pressupost];
-  }
+  
 
   agregarPresupuesto(presupuesto: Pressupost){
-    if(!this._pressupost.includes(presupuesto)){
-      this._pressupost.push(presupuesto)
+    if(!this.pressupost.includes(presupuesto)){
+      this.pressupost.push(presupuesto)
     }
   }
 

@@ -1,3 +1,4 @@
+import { formatDate } from '@angular/common';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Pressupost } from '../interfaces/pressupost.interface';
@@ -10,7 +11,7 @@ import { PressupostService } from '../service/pressupost.service';
 export class HomeComponent implements OnInit {
 
   preu: number = 0;
-  services: string[] = []
+  services: string[] = [];
   open: boolean = false;
 
   @ViewChild('nompresu') nomPresu!: ElementRef<HTMLInputElement>;
@@ -44,17 +45,20 @@ export class HomeComponent implements OnInit {
     valor ? this.services.push('ads') : this.services = this.services.filter(srv => !srv.includes('ads'))
   }
   agregar(){
+    let fechaActual = formatDate(Date.now(), 'dd-MM-yyyy HH:mm:ss', 'en-US');
     let presupuesto: Pressupost = {
       servicios: this.services,
       titulo: this.nomPresu.nativeElement.value,
       cliente: this.nomUsu.nativeElement.value,
       precio: this.total,
       numPaginas: this.presupostSrv.numPaginas,
-      numIdiomas: this.presupostSrv.numIdiomas
+      numIdiomas: this.presupostSrv.numIdiomas,
+      data: fechaActual
     }
     this.presupostSrv.agregarPresupuesto(presupuesto)
     this.nomUsu.nativeElement.value = ''
     this.nomPresu.nativeElement.value = ''
+    console.log(fechaActual)
   }
 
   get total(){
@@ -66,6 +70,9 @@ export class HomeComponent implements OnInit {
       titulo: ['', Validators.required],
       usuario: ['', Validators.required]
     })
+
+    
+
   }
   ngOnInit(): void {
     

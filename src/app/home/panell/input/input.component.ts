@@ -1,6 +1,6 @@
 import { Component, OnDestroy } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { PressupostService } from '../service/pressupost.service';
+import { PressupostService } from '../../../service/pressupost.service';
 
 @Component({
   selector: 'app-input',
