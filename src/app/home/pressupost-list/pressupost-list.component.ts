@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Pressupost } from '../../interfaces/pressupost.interface';
 import { SortFechaPipe } from '../../pipes/sort-fecha.pipe';
 import { SortPipe } from '../../pipes/sort.pipe';
 import { PressupostService } from '../../service/pressupost.service';
@@ -11,13 +10,30 @@ import { PressupostService } from '../../service/pressupost.service';
   providers : [SortPipe,SortFechaPipe]
 })
 export class PressupostListComponent{
-
-  ordenarPorFecha(){
-    this.sortfecha.transform(this.presupuestosSrv.pressupost)
-  }
+  
+  abrir: boolean = false
   ordenarAlfabeticamente(){
-    this.sort.transform(this.presupuestosSrv.pressupost)
+    let presu = this.presupuestosSrv.presupuestoOrdenado
+    this.sort.transform(presu)
+    this.abrir = true
   }
+  ordenarPorFecha(){
+    let presu = this.presupuestosSrv.presupuestoOrdenado
+    this.sortfecha.transform(presu)
+    this.abrir = true
+  }
+  reestablecer(){
+    this.abrir = false
+  }
+
+  get pressupost(){
+    return this.presupuestosSrv.pressupost
+  }
+
+  
+  
+
+  
 
   constructor( private presupuestosSrv: PressupostService, private sort: SortPipe, private sortfecha: SortFechaPipe) { }
 

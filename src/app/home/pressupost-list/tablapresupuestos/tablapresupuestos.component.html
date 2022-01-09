@@ -11,7 +11,7 @@
         </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let item of pressupost; let i = index">
+    <tr *ngFor="let item of getOrdenado; let i = index">
         <th scope="row">{{i+1}}</th>
         <td>{{item.servicios}}</td>
         <td>{{item.titulo}}</td>

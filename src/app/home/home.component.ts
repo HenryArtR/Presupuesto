@@ -19,9 +19,6 @@ export class HomeComponent implements OnInit {
 
   validador: FormGroup;
 
-
-
-
   web(valor: boolean){
     if(valor === true){
       this.preu += 500;
@@ -46,8 +43,9 @@ export class HomeComponent implements OnInit {
   }
   agregar(){
     let fechaActual = formatDate(Date.now(), 'dd-MM-yyyy HH:mm:ss', 'en-US');
+    let servicio = this.services
     let presupuesto: Pressupost = {
-      servicios: this.services,
+      servicios: servicio,
       titulo: this.nomPresu.nativeElement.value,
       cliente: this.nomUsu.nativeElement.value,
       precio: this.total,
@@ -56,6 +54,7 @@ export class HomeComponent implements OnInit {
       data: fechaActual
     }
     this.presupostSrv.agregarPresupuesto(presupuesto)
+    this.presupostSrv.presupuestoOrdenado.push(presupuesto)
     this.nomUsu.nativeElement.value = ''
     this.nomPresu.nativeElement.value = ''
     console.log(fechaActual)
@@ -75,7 +74,6 @@ export class HomeComponent implements OnInit {
 
   }
   ngOnInit(): void {
-    
   }
 
 }

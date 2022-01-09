@@ -10,13 +10,13 @@ import { PressupostService } from '../../../service/pressupost.service';
 export class InputComponent implements OnDestroy {
 
   miFormulario = new FormGroup ({
-    numpag: new FormControl('', Validators.required),
-    numidiomas: new FormControl('', Validators.required)
+    numpag: new FormControl('', [Validators.required, Validators.pattern(/^[0-9]/)]),
+    numidiomas: new FormControl('', [Validators.required, Validators.pattern(/^[0-9]/)])
   });
-
-  valor1: number = 0;
-  valor2: number = 0;
+  
   cantidad: string = '';
+  valor1: number = 0
+  valor2: number = 0
 
 
   cambiaPag(){
@@ -27,35 +27,39 @@ export class InputComponent implements OnDestroy {
   }
 
   agregarValor(){
-    this.presupostSrv.calcularTotal(this.valor1, this.valor2)
-    this.presupostSrv.numPaginas = this.valor1
-    this.presupostSrv.numIdiomas = this.valor2
+    if(this.valor1 >= 0 ){
+      this.presupostSrv.calcularTotal(this.valor1, this.valor2)
+      this.presupostSrv.numPaginas = this.valor1
+      this.presupostSrv.numIdiomas = this.valor2
+    }else{
+      alert('introduce un numero entero')
+    }
   }
 
   suma1(){
-    this.valor1++
-    this.presupostSrv.calcularTotal(this.valor1, this.valor2)
-    this.presupostSrv.numPaginas = this.valor1
-    this.presupostSrv.numIdiomas = this.valor2
+    if(this.valor1 >= 0){
+      this.valor1++
+    }
+    this.agregarValor()
   }
   resta1(){
-    this.valor1--
-    this.presupostSrv.calcularTotal(this.valor1, this.valor2)
-    this.presupostSrv.numPaginas = this.valor1
-    this.presupostSrv.numIdiomas = this.valor2
+    if(this.valor1 > 0){
+      this.valor1--
+    }
+    this.agregarValor()
   }
 
   suma2(){
-    this.valor2++
-    this.presupostSrv.calcularTotal(this.valor1, this.valor2)
-    this.presupostSrv.numPaginas = this.valor1
-    this.presupostSrv.numIdiomas = this.valor2
+    if(this.valor2 >= 0){
+      this.valor2++
+    }
+    this.agregarValor()
   }
   resta2(){
-    this.valor2--
-    this.presupostSrv.calcularTotal(this.valor1, this.valor2)
-    this.presupostSrv.numPaginas = this.valor1
-    this.presupostSrv.numIdiomas = this.valor2
+    if(this.valor2 > 0){
+      this.valor2--
+    }
+    this.agregarValor()
   }
 
 

@@ -1,5 +1,5 @@
 <h3 class="text-center">Listado de Presupuestos</h3>
-<div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+<div class="btn-group d-flex justify-content-center" role="group" aria-label="Basic radio toggle button group">
     <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
     <label class="btn btn-outline-primary" for="btnradio1" (click)="ordenarAlfabeticamente()">Odenar por título</label>
   
@@ -7,9 +7,33 @@
     <label class="btn btn-outline-primary" for="btnradio2" (click)="ordenarPorFecha()">Odenar por fecha</label>
   
     <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
-    <label class="btn btn-outline-primary" for="btnradio3">Preestablecido</label>
+    <label class="btn btn-outline-primary" for="btnradio3" (click)="reestablecer()">Preestablecido</label>
 </div>
 
-<app-tablabody></app-tablabody>
+<app-tablabody *ngIf="abrir"></app-tablabody>
+<table *ngIf="!abrir" class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Servicios</th>
+            <th scope="col">Titulo</th>
+            <th scope="col">Cliente</th>
+            <th scope="col">Precio</th>
+            <th scope="col">Num Pag/idiomas</th>
+            <th scope="col">Data</th>
+        </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let item of pressupost; let i = index">
+        <th scope="row">{{i+1}}</th>
+        <td>{{item.servicios}}</td>
+        <td>{{item.titulo}}</td>
+        <td>{{item.cliente}}</td>
+        <td>{{item.precio}}</td>
+        <td>Pag = {{item.numPaginas}}/ idiomas = {{item.numIdiomas}}</td>
+        <td>{{item.data}}</td>
+    </tr>
+    </tbody>
+</table>
 
 

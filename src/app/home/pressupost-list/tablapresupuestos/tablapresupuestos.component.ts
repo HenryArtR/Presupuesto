@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Pressupost } from 'src/app/interfaces/pressupost.interface';
 import { PressupostService } from '../../../service/pressupost.service';
 
 @Component({
@@ -6,11 +7,9 @@ import { PressupostService } from '../../../service/pressupost.service';
   templateUrl: './tablapresupuestos.component.html',
   styleUrls: ['./tablapresupuestos.component.css']
 })
-export class TablabodyComponent implements OnInit {
+export class TablapresupuestosComponent implements OnInit {
 
-  get pressupost(){
-    return this.presupostSrv.pressupost
-  }
+  getOrdenado: Pressupost[] = this.presupostSrv.presupuestoOrdenado;
 
   constructor(private presupostSrv: PressupostService) { }
 
