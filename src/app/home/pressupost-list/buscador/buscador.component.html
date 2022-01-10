@@ -1,0 +1,29 @@
+<div class="input-group mb-3">
+    <input type="text" class="form-control" placeholder="Introduce el titulo del presupuesto" aria-label="Recipient's username" aria-describedby="button-addon2" #buscador>
+    <button class="btn btn-outline-secondary" type="button" id="button-addon2" (click)="encontrarPresupuesto()">Buscar</button>
+</div>
+
+<table *ngIf="open" class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Servicios</th>
+            <th scope="col">Titulo</th>
+            <th scope="col">Cliente</th>
+            <th scope="col">Precio</th>
+            <th scope="col">Num Pag/idiomas</th>
+            <th scope="col">Data</th>
+        </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let item of resultado; let i = index">
+        <th scope="row">{{i+1}}</th>
+        <td>{{item.servicios}}</td>
+        <td>{{item.titulo}}</td>
+        <td>{{item.cliente}}</td>
+        <td>{{item.precio}}</td>
+        <td>Pag = {{item.numPaginas}}/ idiomas = {{item.numIdiomas}}</td>
+        <td>{{item.data}}</td>
+    </tr>
+    </tbody>
+</table>
