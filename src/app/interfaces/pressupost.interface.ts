@@ -1,4 +1,3 @@
-import { Data } from "@angular/router";
 
 export interface Pressupost{
     servicios: string[];
@@ -8,4 +7,11 @@ export interface Pressupost{
     cliente: string;
     precio: number;
     data: string;
+}
+export interface ServicesParams {
+    web: boolean,
+    seo: boolean,
+    ads: boolean,
+    nPaginas?: number,
+    nIdiomas?: number
 }

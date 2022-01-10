@@ -20,6 +20,8 @@ export class PressupostService {
   
 
   agregarPresupuesto(presupuesto: Pressupost){
+    presupuesto.titulo = presupuesto.titulo.toLowerCase()
+    presupuesto.cliente = presupuesto.cliente.toLowerCase()
     if(!this._pressupost.includes(presupuesto)){
       this._pressupost.push(presupuesto)
     }

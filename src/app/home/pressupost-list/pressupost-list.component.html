@@ -30,8 +30,8 @@
     <tr *ngFor="let item of pressupost; let i = index">
         <th scope="row">{{i+1}}</th>
         <td>{{item.servicios}}</td>
-        <td>{{item.titulo}}</td>
-        <td>{{item.cliente}}</td>
+        <td>{{item.titulo | titlecase}}</td>
+        <td>{{item.cliente | titlecase}}</td>
         <td>{{item.precio}}</td>
         <td>Pag = {{item.numPaginas}}/ idiomas = {{item.numIdiomas}}</td>
         <td>{{item.data}}</td>
