@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 import { HomeComponent } from './home.component';
 import { InputComponent } from './panell/input/input.component';
 import { ModalComponent } from './panell/input/modal/modal.component';
@@ -31,7 +32,8 @@ import { TablapresupuestosComponent } from './pressupost-list/tablapresupuestos/
   imports: [
     CommonModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule
   ]
 })
 export class HomeModule { }

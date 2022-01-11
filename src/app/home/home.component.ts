@@ -14,6 +14,7 @@ export class HomeComponent implements OnInit {
   preu: number = 0;
   services: string[] = [];
   open: boolean = false;
+  activado: boolean = false
 
   @ViewChild('nompresu') nomPresu!: ElementRef<HTMLInputElement>;
   @ViewChild('nomusu') nomUsu!: ElementRef<HTMLInputElement>;
@@ -38,7 +39,6 @@ export class HomeComponent implements OnInit {
       
       this.services = this.services.filter(srv => !srv.includes('web'))
     }
-    
     this.escucharParametro()
   }
 
@@ -67,17 +67,21 @@ export class HomeComponent implements OnInit {
       numIdiomas: this.presupostSrv.numIdiomas,
       data: fechaActual
     }
-    if (this.nomUsu.nativeElement.value && this.nomPresu.nativeElement.value !== '') {
+    if (this.nomUsu.nativeElement.value && this.nomPresu.nativeElement.value !== '' && this.total != 0) {
       this.presupostSrv.agregarPresupuesto(presupuesto)
       this.presupostSrv.presupuestoOrdenado.push(presupuesto)
+      this.activado = false
+    }else{
+      this.activado = true
     }
     this.nomUsu.nativeElement.value = ''
     this.nomPresu.nativeElement.value = ''
   }
   
   escucharParametro(){
+    this.activado = false
     this.router.navigate(
-      ['home'],{queryParams: this.serviceParams}
+      ['home'],{queryParams: this.serviceParams, queryParamsHandling: 'merge'}
     )
   }
   
@@ -90,8 +94,6 @@ export class HomeComponent implements OnInit {
       titulo: ['', [Validators.required, Validators.pattern(/^[a-zA-z]/)]],
       usuario: ['', [Validators.required, Validators.pattern(/^[a-zA-z]/)]]
     })
-    
-    
     
   }
   ngOnInit(): void {

@@ -11,7 +11,5 @@ export interface Pressupost{
 export interface ServicesParams {
     web: boolean,
     seo: boolean,
-    ads: boolean,
-    nPaginas?: number,
-    nIdiomas?: number
+    ads: boolean
 }

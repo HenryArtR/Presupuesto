@@ -1,9 +1,4 @@
 <div class="container">
-  <ul class="nav nav-pills">
-    <li class="nav-item">
-      <a class="nav-link active" aria-current="page" href="">Volver a Inicio</a>
-    </li>
-  </ul>
   <br>
   <div class="row">
     <div class="col">
@@ -13,26 +8,37 @@
       <input type="checkbox" #cbox2 id="cbox2" (click)="seo(cbox2.checked)"><label for="cbox2">Una consultoria SEO (300€)</label><br>
       <input type="checkbox" #cbox3 id="cbox3" (click)="ads(cbox3.checked)"><label for="cbox3">Una campanya de Google Ads (200€)</label><br>
       <br>
-      <form [formGroup]="validador" (ngSubmit)="agregar()">
+      <ng-container *ngIf="activado" >
+        <div class="alert alert-dismissible alert-danger" role="alert">
+          Selecciona una casilla
+        </div>
+      </ng-container>
+      <form [formGroup]="validador" (ngSubmit)="agregar()" autocomplete="off">
         <label for="nomPressupost">Nombre del presupuesto</label><br><input type="text" id="nomPressupost" #nompresu formControlName = 'titulo'>
         <br>
         <label for="nomClient">Nombre de usuario</label><br><input type="text" id="nomClient" #nomusu formControlName = 'usuario'>
       </form>
       
-
+      
       <p>Preu: {{total}} </p>
-
+      
       <button class="btn btn-secondary" [disabled]="!validador.valid" type="submit" (click)="agregar()">Agregar presupuesto</button>
-
+      
+      <div class="row my-2">
+        <div class="col">
+          <button class="btn btn-primary" routerLink="/bienvenida">Volver</button>
+        </div>
+      </div>
       
     </div>
-
+    
     <div class="col">
       <app-pressupost-list></app-pressupost-list>
     </div>
   </div>
 
-</div>   
+  
+</div>
 
 
 
