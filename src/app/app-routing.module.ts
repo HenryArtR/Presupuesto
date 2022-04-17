@@ -5,7 +5,7 @@ import { HomeComponent } from './home/home.component';
 import { InputComponent } from './home/panell/input/input.component';
 
 const routes: Routes = [
-  {path: 'bienvenida', component: BienvenidaComponent},
+  {path: '', component: BienvenidaComponent},
   {path: 'home', component: HomeComponent},
   
   
